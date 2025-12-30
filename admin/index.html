@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Shamrat's Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <div class="admin-logo">
+                <i class="fas fa-cog"></i>
+                <span>Admin Panel</span>
+            </div>
+            
+            <div class="admin-actions">
+                <button class="admin-btn admin-btn-secondary" id="preview-btn">
+                    <i class="fas fa-eye"></i>
+                    Preview
+                </button>
+                <button class="admin-btn admin-btn-secondary" id="export-btn">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+                <button class="admin-btn admin-btn-danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <ul class="admin-nav-list">
+                    <li class="admin-nav-item">
+                        <a href="#dashboard" class="admin-nav-link active" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#hero" class="admin-nav-link" data-section="hero">
+                            <i class="fas fa-home"></i>
+                            <span>Hero Section</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#about" class="admin-nav-link" data-section="about">
+                            <i class="fas fa-user"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#experience" class="admin-nav-link" data-section="experience">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Experience</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#skills" class="admin-nav-link" data-section="skills">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Skills</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#portfolio" class="admin-nav-link" data-section="portfolio">
+                            <i class="fas fa-folder"></i>
+                            <span>Portfolio</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#blog" class="admin-nav-link" data-section="blog">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#contact" class="admin-nav-link" data-section="contact">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#theme" class="admin-nav-link" data-section="theme">
+                            <i class="fas fa-palette"></i>
+                            <span>Theme</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#media" class="admin-nav-link" data-section="media">
+                            <i class="fas fa-images"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#settings" class="admin-nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-content">
+                
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="admin-section active">
+                    <div class="admin-section-header">
+                        <h1>Dashboard</h1>
+                        <p>Welcome to the admin panel. Manage your website content and settings.</p>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="dashboard-card-content">
+                                <h3>Website Stats</h3>
+                                <p>View analytics and performance metrics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="dashboard-card-content">
+                                <h3>Quick Edit</h3>
+                                <p>Access frequently updated content</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <div class="dashboard-card-content">
+                                <h3>Backup & Export</h3>
+                                <p>Download your website data</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="dashboard-card-content">
+                                <h3>Preview Mode</h3>
+                                <p>Preview changes before publishing</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-edit"></i>
+                                <span>Updated hero section</span>
+                                <span class="activity-time">2 minutes ago</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-upload"></i>
+                                <span>Uploaded new portfolio image</span>
+                                <span class="activity-time">1 hour ago</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Changed theme colors</span>
+                                <span class="activity-time">3 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hero Section -->
+                <section id="hero" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Hero Section</h1>
+                        <p>Edit your main banner content</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="hero-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="hero-name">Full Name</label>
+                                <input type="text" id="hero-name" name="name" placeholder="Your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hero-title">Professional Title</label>
+                                <input type="text" id="hero-title" name="title" placeholder="Your professional title">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hero-description">Description</label>
+                                <textarea id="hero-description" name="description" rows="4" placeholder="Brief description about yourself"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hero-profile-image">Profile Image</label>
+                                <div class="image-upload">
+                                    <input type="file" id="hero-profile-image" accept="image/*">
+                                    <div class="image-preview" id="hero-image-preview">
+                                        <img src="../imgs/shamrat-profile.jpg" alt="Profile Image">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Call-to-Action Buttons</label>
+                                <div class="cta-buttons">
+                                    <div class="cta-button">
+                                        <input type="text" id="cta1-text" placeholder="Button 1 Text" value="View My Work">
+                                        <input type="text" id="cta1-link" placeholder="Button 1 Link" value="#portfolio">
+                                    </div>
+                                    <div class="cta-button">
+                                        <input type="text" id="cta2-text" placeholder="Button 2 Text" value="Get In Touch">
+                                        <input type="text" id="cta2-link" placeholder="Button 2 Link" value="#contact">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Motivational Words (for profile image animation)</label>
+                                <div class="motivational-words">
+                                    <input type="text" class="motivation-word-input" placeholder="Enter a word" value="Excellence">
+                                    <input type="text" class="motivation-word-input" placeholder="Enter a word" value="Innovation">
+                                    <input type="text" class="motivation-word-input" placeholder="Enter a word" value="Leadership">
+                                    <input type="text" class="motivation-word-input" placeholder="Enter a word" value="Growth">
+                                    <input type="text" class="motivation-word-input" placeholder="Enter a word" value="Success">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="hero-preview">
+                                    <i class="fas fa-eye"></i>
+                                    Preview
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>About Section</h1>
+                        <p>Edit your about section content</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="about-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="about-title">Section Title</label>
+                                <input type="text" id="about-title" name="title" placeholder="Section title" value="About Me">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="about-subtitle">Section Subtitle</label>
+                                <input type="text" id="about-subtitle" name="subtitle" placeholder="Section subtitle" value="Passionate about creating impact through strategic thinking and data-driven solutions.">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="about-description">Description</label>
+                                <textarea id="about-description" name="description" rows="6" placeholder="Main description about yourself"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>About Highlights</label>
+                                <div id="highlights-container">
+                                    <div class="highlight-item">
+                                        <input type="text" placeholder="Icon class (e.g., fas fa-graduation-cap)" value="fas fa-graduation-cap">
+                                        <input type="text" placeholder="Title" value="Education">
+                                        <input type="text" placeholder="Description" value="MBA & BBA in Marketing from Islamic University">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-highlight">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <input type="text" placeholder="Icon class (e.g., fas fa-briefcase)" value="fas fa-briefcase">
+                                        <input type="text" placeholder="Title" value="Experience">
+                                        <input type="text" placeholder="Description" value="2+ years in operations and marketing roles">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-highlight">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <input type="text" placeholder="Icon class (e.g., fas fa-heart)" value="fas fa-heart">
+                                        <input type="text" placeholder="Title" value="Passion">
+                                        <input type="text" placeholder="Description" value="Bridging the gap between strategy and execution">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-highlight">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-highlight">
+                                    <i class="fas fa-plus"></i>
+                                    Add Highlight
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Statistics</label>
+                                <div id="stats-container">
+                                    <div class="stat-item">
+                                        <input type="text" placeholder="Number" value="551+">
+                                        <input type="text" placeholder="Label" value="Outlets Managed">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-stat">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="stat-item">
+                                        <input type="text" placeholder="Number" value="62">
+                                        <input type="text" placeholder="Label" value="Districts Covered">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-stat">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="stat-item">
+                                        <input type="text" placeholder="Number" value="100%">
+                                        <input type="text" placeholder="Label" value="Client Satisfaction">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-stat">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="stat-item">
+                                        <input type="text" placeholder="Number" value="5+">
+                                        <input type="text" placeholder="Label" value="Certifications">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-stat">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-stat">
+                                    <i class="fas fa-plus"></i>
+                                    Add Statistic
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Experience Section</h1>
+                        <p>Manage your work experience</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="experience-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="experience-title">Section Title</label>
+                                <input type="text" id="experience-title" name="title" placeholder="Section title" value="Professional Experience">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="experience-subtitle">Section Subtitle</label>
+                                <input type="text" id="experience-subtitle" name="subtitle" placeholder="Section subtitle" value="Building expertise through diverse roles and challenges">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Work Experience</label>
+                                <div id="experience-container">
+                                    <div class="experience-item">
+                                        <input type="text" placeholder="Job Title" value="Officer – Smart Banking Operations">
+                                        <input type="text" placeholder="Company" value="DOER Services PLC">
+                                        <input type="text" placeholder="Date Range" value="Nov 2024 – Aug 2025">
+                                        <textarea placeholder="Job Description" rows="3">Managed daily operations for 551+ agent banking outlets across 62 districts as liaison between field teams, outlet owners, and Agrani Bank stakeholders. Addressed compliance and ownership-related issues while monitoring outlet performance and preparing monthly Bangladesh Bank Transaction Reports.</textarea>
+                                        <input type="text" placeholder="Tags (comma-separated)" value="Operations Management, Stakeholder Coordination, Data Analysis, Compliance">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-experience">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="experience-item">
+                                        <input type="text" placeholder="Job Title" value="Marketing Intern">
+                                        <input type="text" placeholder="Company" value="Kiam Metal Industries">
+                                        <input type="text" placeholder="Date Range" value="Dec 2023 – Mar 2024">
+                                        <textarea placeholder="Job Description" rows="3">Supported marketing team in developing sales strategies and conducting market research to identify new business opportunities. Assisted in promotional campaign planning and competitive analysis for cookware products.</textarea>
+                                        <input type="text" placeholder="Tags (comma-separated)" value="Market Research, Sales Strategy, Competitive Analysis, Campaign Planning">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-experience">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-experience">
+                                    <i class="fas fa-plus"></i>
+                                    Add Experience
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Skills Section</h1>
+                        <p>Manage your skills and expertise</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="skills-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="skills-title">Section Title</label>
+                                <input type="text" id="skills-title" name="title" placeholder="Section title" value="Skills & Expertise">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skills-subtitle">Section Subtitle</label>
+                                <input type="text" id="skills-subtitle" name="subtitle" placeholder="Section subtitle" value="Tools and technologies I use to create value">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Skill Categories</label>
+                                <div id="skills-container">
+                                    <div class="skill-category">
+                                        <input type="text" placeholder="Category Name" value="Technical Skills" class="category-name">
+                                        <div class="skills-list">
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Advanced Excel / Google Sheets">
+                                                <select class="skill-level">
+                                                    <option value="expert" selected>Expert</option>
+                                                    <option value="advanced">Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-chart-line)" value="fas fa-chart-line">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Power BI Dashboarding">
+                                                <select class="skill-level">
+                                                    <option value="expert">Expert</option>
+                                                    <option value="advanced" selected>Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-chart-bar)" value="fas fa-chart-bar">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Data Analysis & Reporting">
+                                                <select class="skill-level">
+                                                    <option value="expert" selected>Expert</option>
+                                                    <option value="advanced">Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-database)" value="fas fa-database">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="admin-btn admin-btn-secondary add-skill">
+                                            <i class="fas fa-plus"></i>
+                                            Add Skill
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="skill-category">
+                                        <input type="text" placeholder="Category Name" value="Professional Skills" class="category-name">
+                                        <div class="skills-list">
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Strategic Thinking">
+                                                <select class="skill-level">
+                                                    <option value="expert" selected>Expert</option>
+                                                    <option value="advanced">Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-chess)" value="fas fa-chess">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Team Leadership">
+                                                <select class="skill-level">
+                                                    <option value="expert">Expert</option>
+                                                    <option value="advanced" selected>Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-users)" value="fas fa-users">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                            <div class="skill-item">
+                                                <input type="text" placeholder="Skill Name" value="Customer Relations">
+                                                <select class="skill-level">
+                                                    <option value="expert" selected>Expert</option>
+                                                    <option value="advanced">Advanced</option>
+                                                    <option value="intermediate">Intermediate</option>
+                                                </select>
+                                                <input type="text" placeholder="Icon (e.g., fas fa-handshake)" value="fas fa-handshake">
+                                                <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-skill">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="admin-btn admin-btn-secondary add-skill">
+                                            <i class="fas fa-plus"></i>
+                                            Add Skill
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-skill-category">
+                                    <i class="fas fa-plus"></i>
+                                    Add Category
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Certifications</label>
+                                <div id="certifications-container">
+                                    <div class="cert-item">
+                                        <input type="text" placeholder="Icon (e.g., fas fa-certificate)" value="fas fa-certificate">
+                                        <input type="text" placeholder="Title" value="Email Marketing Certification">
+                                        <input type="text" placeholder="Organization" value="HubSpot Academy">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-cert">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="cert-item">
+                                        <input type="text" placeholder="Icon (e.g., fas fa-laptop-code)" value="fas fa-laptop-code">
+                                        <input type="text" placeholder="Title" value="Advanced MS Office Certificate">
+                                        <input type="text" placeholder="Organization" value="Udemy">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-cert">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-certification">
+                                    <i class="fas fa-plus"></i>
+                                    Add Certification
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section id="portfolio" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Portfolio Section</h1>
+                        <p>Manage your portfolio projects</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="portfolio-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="portfolio-title">Section Title</label>
+                                <input type="text" id="portfolio-title" name="title" placeholder="Section title" value="Portfolio">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="portfolio-subtitle">Section Subtitle</label>
+                                <input type="text" id="portfolio-subtitle" name="subtitle" placeholder="Section subtitle" value="Projects that showcase my expertise and impact">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Portfolio Projects</label>
+                                <div id="portfolio-container">
+                                    <div class="portfolio-item">
+                                        <input type="text" placeholder="Project Title" value="Banking Operations Analytics Dashboard">
+                                        <textarea placeholder="Project Description" rows="3">Comprehensive Power BI dashboard analyzing performance metrics across 551+ banking outlets, providing real-time insights for strategic decision making.</textarea>
+                                        <input type="text" placeholder="Category" value="analytics">
+                                        <input type="text" placeholder="Image URL" value="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop">
+                                        <input type="text" placeholder="Tags (comma-separated)" value="Power BI, Data Analytics, Dashboard Design">
+                                        <input type="text" placeholder="Live Link" value="#">
+                                        <input type="text" placeholder="GitHub Link" value="#">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-portfolio">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="portfolio-item">
+                                        <input type="text" placeholder="Project Title" value="Digital Marketing Strategy & Campaign">
+                                        <textarea placeholder="Project Description" rows="3">Developed comprehensive digital marketing strategy for metal industry products, including market research, competitor analysis, and campaign execution.</textarea>
+                                        <input type="text" placeholder="Category" value="marketing">
+                                        <input type="text" placeholder="Image URL" value="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop">
+                                        <input type="text" placeholder="Tags (comma-separated)" value="Digital Marketing, Market Research, Strategy Development">
+                                        <input type="text" placeholder="Live Link" value="#">
+                                        <input type="text" placeholder="GitHub Link" value="#">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-portfolio">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-portfolio">
+                                    <i class="fas fa-plus"></i>
+                                    Add Project
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Portfolio Categories</label>
+                                <div class="portfolio-categories">
+                                    <input type="text" placeholder="Category Name" value="analytics">
+                                    <input type="text" placeholder="Category Name" value="marketing">
+                                    <input type="text" placeholder="Category Name" value="operations">
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-portfolio-category">
+                                    <i class="fas fa-plus"></i>
+                                    Add Category
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Blog Section -->
+                <section id="blog" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Blog Section</h1>
+                        <p>Manage your blog posts</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="blog-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="blog-title">Section Title</label>
+                                <input type="text" id="blog-title" name="title" placeholder="Section title" value="Latest Insights">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blog-subtitle">Section Subtitle</label>
+                                <input type="text" id="blog-subtitle" name="subtitle" placeholder="Section subtitle" value="Thoughts on marketing, operations, and professional growth">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Blog Posts</label>
+                                <div id="blog-container">
+                                    <div class="blog-item">
+                                        <input type="text" placeholder="Post Title" value="The Future of Digital Banking in Bangladesh">
+                                        <textarea placeholder="Post Excerpt" rows="3">Exploring how digital transformation is reshaping the banking landscape in Bangladesh, and what it means for traditional banking operations and customer experience.</textarea>
+                                        <input type="text" placeholder="Category" value="Digital Transformation">
+                                        <input type="text" placeholder="Image URL" value="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=400&fit=crop">
+                                        <input type="text" placeholder="Date" value="Dec 8, 2025">
+                                        <input type="text" placeholder="Read Time" value="5 min read">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-blog">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="blog-item">
+                                        <input type="text" placeholder="Post Title" value="Data-Driven Decision Making in Operations">
+                                        <textarea placeholder="Post Excerpt" rows="3">How leveraging data analytics can transform operational efficiency and drive better business outcomes, with insights from managing 551+ banking outlets.</textarea>
+                                        <input type="text" placeholder="Category" value="Data Analytics">
+                                        <input type="text" placeholder="Image URL" value="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop">
+                                        <input type="text" placeholder="Date" value="Dec 5, 2025">
+                                        <input type="text" placeholder="Read Time" value="4 min read">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-blog">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-blog">
+                                    <i class="fas fa-plus"></i>
+                                    Add Blog Post
+                                </button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Contact Section</h1>
+                        <p>Manage your contact information</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="contact-form" class="admin-form">
+                            <div class="form-group">
+                                <label for="contact-title">Section Title</label>
+                                <input type="text" id="contact-title" name="title" placeholder="Section title" value="Get In Touch">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-subtitle">Section Subtitle</label>
+                                <input type="text" id="contact-subtitle" name="subtitle" placeholder="Section subtitle" value="Let's discuss how we can work together">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Contact Information</label>
+                                <div id="contact-info-container">
+                                    <div class="contact-info-item">
+                                        <input type="text" placeholder="Icon (e.g., fas fa-envelope)" value="fas fa-envelope">
+                                        <input type="text" placeholder="Type" value="Email">
+                                        <input type="text" placeholder="Value" value="shamrat.r.h@gmail.com">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-contact-info">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <input type="text" placeholder="Icon (e.g., fas fa-phone)" value="fas fa-phone">
+                                        <input type="text" placeholder="Type" value="Phone">
+                                        <input type="text" placeholder="Value" value="+88 01727-805705">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-contact-info">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <input type="text" placeholder="Icon (e.g., fab fa-linkedin)" value="fab fa-linkedin">
+                                        <input type="text" placeholder="Type" value="LinkedIn">
+                                        <input type="text" placeholder="Value" value="linkedin.com/in/shamrat5">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-contact-info">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <input type="text" placeholder="Icon (e.g., fas fa-map-marker-alt)" value="fas fa-map-marker-alt">
+                                        <input type="text" placeholder="Type" value="Location">
+                                        <input type="text" placeholder="Value" value="Azimpur, Dhaka, Bangladesh">
+                                        <button type="button" class="admin-btn admin-btn-danger admin-btn-sm remove-contact-info">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="add-contact-info">
+                                    <i class="fas fa-plus"></i>
+                                    Add Contact Info
+                                </button>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Contact Form Settings</label>
+                                <div class="form-settings">
+                                    <input type="text" placeholder="Default Subject" value="Message from Portfolio Website">
+                                    <input type="text" placeholder="Success Message" value="Your email client should now be open with the message. If it didn't open, please email directly to shamrat.r.h@gmail.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Theme Section -->
+                <section id="theme" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Theme Customization</h1>
+                        <p>Customize colors, fonts, and styling</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="theme-form" class="admin-form">
+                            <div class="theme-colors">
+                                <h3>Color Scheme</h3>
+                                <div class="color-group">
+                                    <div class="color-item">
+                                        <label>Primary Color</label>
+                                        <input type="color" id="primary-color" value="#0A84FF">
+                                        <input type="text" id="primary-color-text" value="#0A84FF">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Background Color</label>
+                                        <input type="color" id="bg-color" value="#0A0A0A">
+                                        <input type="text" id="bg-color-text" value="#0A0A0A">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Surface Color</label>
+                                        <input type="color" id="surface-color" value="#141414">
+                                        <input type="text" id="surface-color-text" value="#141414">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Text Primary</label>
+                                        <input type="color" id="text-primary-color" value="#E4E4E7">
+                                        <input type="text" id="text-primary-color-text" value="#E4E4E7">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Text Secondary</label>
+                                        <input type="color" id="text-secondary-color" value="#A1A1AA">
+                                        <input type="text" id="text-secondary-color-text" value="#A1A1AA">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Success Color</label>
+                                        <input type="color" id="success-color" value="#34D399">
+                                        <input type="text" id="success-color-text" value="#34D399">
+                                    </div>
+                                    <div class="color-item">
+                                        <label>Error Color</label>
+                                        <input type="color" id="error-color" value="#F87171">
+                                        <input type="text" id="error-color-text" value="#F87171">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-fonts">
+                                <h3>Typography</h3>
+                                <div class="font-group">
+                                    <div class="font-item">
+                                        <label>Heading Font</label>
+                                        <select id="heading-font">
+                                            <option value="'Poppins', sans-serif" selected>Poppins</option>
+                                            <option value="'Inter', sans-serif">Inter</option>
+                                            <option value="'Roboto', sans-serif">Roboto</option>
+                                            <option value="'Open Sans', sans-serif">Open Sans</option>
+                                        </select>
+                                    </div>
+                                    <div class="font-item">
+                                        <label>Body Font</label>
+                                        <select id="body-font">
+                                            <option value="'Inter', sans-serif" selected>Inter</option>
+                                            <option value="'Poppins', sans-serif">Poppins</option>
+                                            <option value="'Roboto', sans-serif">Roboto</option>
+                                            <option value="'Open Sans', sans-serif">Open Sans</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-layout">
+                                <h3>Layout Settings</h3>
+                                <div class="layout-group">
+                                    <div class="layout-item">
+                                        <label>Max Width (px)</label>
+                                        <input type="number" id="max-width" value="1280" min="800" max="1920">
+                                    </div>
+                                    <div class="layout-item">
+                                        <label>Border Radius (px)</label>
+                                        <input type="number" id="border-radius" value="8" min="0" max="20">
+                                    </div>
+                                    <div class="layout-item">
+                                        <label>Spacing Scale</label>
+                                        <select id="spacing-scale">
+                                            <option value="8px" selected>8px Base</option>
+                                            <option value="10px">10px Base</option>
+                                            <option value="12px">12px Base</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-presets">
+                                <h3>Theme Presets</h3>
+                                <div class="preset-buttons">
+                                    <button type="button" class="admin-btn admin-btn-secondary" data-preset="default">Default</button>
+                                    <button type="button" class="admin-btn admin-btn-secondary" data-preset="blue">Blue Theme</button>
+                                    <button type="button" class="admin-btn admin-btn-secondary" data-preset="green">Green Theme</button>
+                                    <button type="button" class="admin-btn admin-btn-secondary" data-preset="purple">Purple Theme</button>
+                                    <button type="button" class="admin-btn admin-btn-secondary" data-preset="orange">Orange Theme</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Apply Theme
+                                </button>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="theme-preview">
+                                    <i class="fas fa-eye"></i>
+                                    Preview
+                                </button>
+                                <button type="button" class="admin-btn admin-btn-secondary" id="reset-theme">
+                                    <i class="fas fa-undo"></i>
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Media Section -->
+                <section id="media" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Media Management</h1>
+                        <p>Upload and manage images and files</p>
+                    </div>
+                    
+                    <div class="media-container">
+                        <div class="upload-area">
+                            <div class="upload-zone" id="upload-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Drag & Drop Files Here</h3>
+                                <p>or click to select files</p>
+                                <input type="file" id="file-input" multiple accept="image/*">
+                            </div>
+                        </div>
+                        
+                        <div class="media-grid" id="media-grid">
+                            <div class="media-item">
+                                <img src="../imgs/shamrat-profile.jpg" alt="Profile Image">
+                                <div class="media-overlay">
+                                    <span class="media-filename">shamrat-profile.jpg</span>
+                                    <button class="admin-btn admin-btn-danger admin-btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="admin-section">
+                    <div class="admin-section-header">
+                        <h1>Settings</h1>
+                        <p>Manage website settings and configuration</p>
+                    </div>
+                    
+                    <div class="form-container">
+                        <form id="settings-form" class="admin-form">
+                            <div class="form-group">
+                                <label>Website Settings</label>
+                                <div class="setting-item">
+                                    <label for="site-title">Site Title</label>
+                                    <input type="text" id="site-title" value="Md. Shamrat Hossain - Marketing & Operations Professional">
+                                </div>
+                                <div class="setting-item">
+                                    <label for="site-description">Site Description</label>
+                                    <textarea id="site-description" rows="3">Marketing and Operations Professional specializing in data-driven decision making, customer relations, and business development.</textarea>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="admin-password">Admin Password</label>
+                                    <input type="password" id="admin-password" placeholder="Change admin password">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Feature Toggles</label>
+                                <div class="toggle-item">
+                                    <label>
+                                        <input type="checkbox" id="enable-analytics" checked>
+                                        <span class="toggle-slider"></span>
+                                        Enable Analytics
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <label>
+                                        <input type="checkbox" id="enable-particles" checked>
+                                        <span class="toggle-slider"></span>
+                                        Enable Particle Animation
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <label>
+                                        <input type="checkbox" id="enable-auto-logo" checked>
+                                        <span class="toggle-slider"></span>
+                                        Enable Auto Logo Transition
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <label>
+                                        <input type="checkbox" id="enable-back-to-top" checked>
+                                        <span class="toggle-slider"></span>
+                                        Enable Back to Top Button
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>SEO Settings</label>
+                                <div class="setting-item">
+                                    <label for="meta-keywords">Meta Keywords</label>
+                                    <input type="text" id="meta-keywords" value="marketing, operations, data analytics, business development">
+                                </div>
+                                <div class="setting-item">
+                                    <label for="og-image">Open Graph Image URL or Path</label>
+                                    <input type="text" id="og-image" value="../imgs/shamrat-profile.jpg" placeholder="Enter image URL or relative path (e.g., ../imgs/image.jpg)">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Image Settings</label>
+                                
+                                <!-- Profile Image Settings -->
+                                <div class="image-settings-group">
+                                    <h4>Profile Image</h4>
+                                    <div class="image-settings-row">
+                                        <div class="setting-item">
+                                            <label for="profile-image-width">Width (px)</label>
+                                            <input type="number" id="profile-image-width" value="400" min="100" max="800">
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="profile-image-height">Height (px)</label>
+                                            <input type="number" id="profile-image-height" value="400" min="100" max="800">
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="profile-image-border-radius">Border Radius</label>
+                                            <input type="text" id="profile-image-border-radius" value="50%" placeholder="e.g., 50%, 20px">
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="profile-image-border-width">Border Width (px)</label>
+                                            <input type="number" id="profile-image-border-width" value="4" min="0" max="20">
+                                        </div>
+                                    </div>
+                                    <div class="image-settings-row">
+                                        <div class="setting-item">
+                                            <label for="profile-image-border-color">Border Color</label>
+                                            <input type="text" id="profile-image-border-color" value="var(--bg-surface)" placeholder="e.g., #fff, var(--bg-surface)">
+                                        </div>
+                                        <div class="setting-item full-width">
+                                            <label for="profile-image-box-shadow">Box Shadow</label>
+                                            <input type="text" id="profile-image-box-shadow" value="0 0 40px rgba(10, 132, 255, 0.3)" placeholder="CSS box-shadow value">
+                                        </div>
+                                    </div>
+                                    <div class="image-settings-row">
+                                        <div class="setting-item">
+                                            <label for="profile-image-object-fit">Object Fit</label>
+                                            <select id="profile-image-object-fit">
+                                                <option value="cover" selected>Cover</option>
+                                                <option value="contain">Contain</option>
+                                                <option value="fill">Fill</option>
+                                                <option value="scale-down">Scale Down</option>
+                                                <option value="none">None</option>
+                                            </select>
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="profile-image-position">Object Position</label>
+                                            <select id="profile-image-position">
+                                                <option value="center" selected>Center</option>
+                                                <option value="top">Top</option>
+                                                <option value="bottom">Bottom</option>
+                                                <option value="left">Left</option>
+                                                <option value="right">Right</option>
+                                                <option value="top left">Top Left</option>
+                                                <option value="top right">Top Right</option>
+                                                <option value="bottom left">Bottom Left</option>
+                                                <option value="bottom right">Bottom Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Portfolio Image Settings -->
+                                <div class="image-settings-group">
+                                    <h4>Portfolio Images</h4>
+                                    <div class="image-settings-row">
+                                        <div class="setting-item">
+                                            <label for="portfolio-image-height">Height (px)</label>
+                                            <input type="number" id="portfolio-image-height" value="250" min="150" max="500">
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="portfolio-image-object-fit">Object Fit</label>
+                                            <select id="portfolio-image-object-fit">
+                                                <option value="cover" selected>Cover</option>
+                                                <option value="contain">Contain</option>
+                                                <option value="fill">Fill</option>
+                                                <option value="scale-down">Scale Down</option>
+                                                <option value="none">None</option>
+                                            </select>
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="portfolio-image-position">Object Position</label>
+                                            <select id="portfolio-image-position">
+                                                <option value="center" selected>Center</option>
+                                                <option value="top">Top</option>
+                                                <option value="bottom">Bottom</option>
+                                                <option value="left">Left</option>
+                                                <option value="right">Right</option>
+                                                <option value="top left">Top Left</option>
+                                                <option value="top right">Top Right</option>
+                                                <option value="bottom left">Bottom Left</option>
+                                                <option value="bottom right">Bottom Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Blog Image Settings -->
+                                <div class="image-settings-group">
+                                    <h4>Blog Images</h4>
+                                    <div class="image-settings-row">
+                                        <div class="setting-item">
+                                            <label for="blog-image-height">Height (px)</label>
+                                            <input type="number" id="blog-image-height" value="200" min="120" max="400">
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="blog-image-object-fit">Object Fit</label>
+                                            <select id="blog-image-object-fit">
+                                                <option value="cover" selected>Cover</option>
+                                                <option value="contain">Contain</option>
+                                                <option value="fill">Fill</option>
+                                                <option value="scale-down">Scale Down</option>
+                                                <option value="none">None</option>
+                                            </select>
+                                        </div>
+                                        <div class="setting-item">
+                                            <label for="blog-image-position">Object Position</label>
+                                            <select id="blog-image-position">
+                                                <option value="center" selected>Center</option>
+                                                <option value="top">Top</option>
+                                                <option value="bottom">Bottom</option>
+                                                <option value="left">Left</option>
+                                                <option value="right">Right</option>
+                                                <option value="top left">Top Left</option>
+                                                <option value="top right">Top Right</option>
+                                                <option value="bottom left">Bottom Left</option>
+                                                <option value="bottom right">Bottom Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="admin-btn admin-btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Settings
+                                </button>
+                                <button type="button" class="admin-btn admin-btn-danger" id="reset-all">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Reset All Data
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="admin-modal" id="auth-modal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h2>Admin Access</h2>
+            </div>
+            <form id="auth-form" class="admin-form">
+                <div class="form-group">
+                    <label for="admin-password-input">Enter Admin Password</label>
+                    <input type="password" id="admin-password-input" placeholder="Enter password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="admin-btn admin-btn-primary">Login</button>
+                    <button type="button" class="admin-btn admin-btn-secondary" id="cancel-auth">Cancel</button>
+                </div>
+                <div class="auth-error" id="auth-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="admin-modal" id="preview-modal">
+        <div class="admin-modal-content admin-modal-large">
+            <div class="admin-modal-header">
+                <h2>Preview Mode</h2>
+                <button class="admin-modal-close" id="close-preview">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="preview-container">
+                <iframe id="preview-frame" src="../index.html" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="admin-notification" id="admin-notification">
+        <div class="notification-content">
+            <i class="notification-icon"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="admin.js"></script>
+</body>
+</html>
