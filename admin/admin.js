@@ -471,9 +471,28 @@ class AdminPanel {
 
     loadThemeData() {
         const data = this.websiteData.theme;
+        document.getElementById('theme-mode').value = data.themeMode || 'dark';
         document.getElementById('primary-color').value = data.colors.primary;
         document.getElementById('primary-color-text').value = data.colors.primary;
-        // ... load other theme values
+        document.getElementById('bg-color').value = data.colors.background;
+        document.getElementById('bg-color-text').value = data.colors.background;
+        document.getElementById('surface-color').value = data.colors.surface;
+        document.getElementById('surface-color-text').value = data.colors.surface;
+        document.getElementById('text-primary-color').value = data.colors.textPrimary;
+        document.getElementById('text-primary-color-text').value = data.colors.textPrimary;
+        document.getElementById('text-secondary-color').value = data.colors.textSecondary;
+        document.getElementById('text-secondary-color-text').value = data.colors.textSecondary;
+        document.getElementById('success-color').value = data.colors.success;
+        document.getElementById('success-color-text').value = data.colors.success;
+        document.getElementById('error-color').value = data.colors.error;
+        document.getElementById('error-color-text').value = data.colors.error;
+
+        document.getElementById('heading-font').value = data.fonts.heading;
+        document.getElementById('body-font').value = data.fonts.body;
+
+        document.getElementById('max-width').value = data.layout.maxWidth;
+        document.getElementById('border-radius').value = data.layout.borderRadius;
+        document.getElementById('spacing-scale').value = data.layout.spacingScale;
     }
 
     loadSettingsData() {
@@ -869,6 +888,7 @@ class AdminPanel {
 
     saveThemeData() {
         this.websiteData.theme = {
+            themeMode: document.getElementById('theme-mode').value,
             colors: {
                 primary: document.getElementById('primary-color').value,
                 background: document.getElementById('bg-color').value,
@@ -891,6 +911,7 @@ class AdminPanel {
         
         this.saveData();
         this.applyTheme();
+        this.updateWebsite();
         this.showNotification('Theme updated successfully!', 'success');
     }
 

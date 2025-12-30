@@ -1271,25 +1271,19 @@ class AdminIntegration {
         const data = this.websiteData.theme;
         if (!data) return;
 
+        // Set the theme mode first
+        if (data.themeMode) {
+            website.managers.theme.setTheme(data.themeMode);
+        }
+
         // Apply CSS custom properties for theme
         const root = document.documentElement;
+
+        // Clear any inline styles that may have been set previously
+        root.style.cssText = '';
         
         if (data.colors) {
             if (data.colors.primary) root.style.setProperty('--primary-500', data.colors.primary);
-            if (data.colors.background) root.style.setProperty('--bg-page', data.colors.background);
-            if (data.colors.surface) root.style.setProperty('--bg-surface', data.colors.surface);
-            if (data.colors.textPrimary) root.style.setProperty('--text-primary', data.colors.textPrimary);
-            if (data.colors.textSecondary) root.style.setProperty('--text-secondary', data.colors.textSecondary);
-        }
-
-        if (data.fonts) {
-            if (data.fonts.heading) root.style.setProperty('--font-heading', data.fonts.heading);
-            if (data.fonts.body) root.style.setProperty('--font-body', data.fonts.body);
-        }
-
-        if (data.layout) {
-            if (data.layout.maxWidth) root.style.setProperty('--max-width', data.layout.maxWidth + 'px');
-            if (data.layout.borderRadius) root.style.setProperty('--border-radius-sm', data.layout.borderRadius + 'px');
         }
     }
 
