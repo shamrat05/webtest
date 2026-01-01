@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/content/blog/_TEMPLATE/</loc>
+        <lastmod>2025-01-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-xxxxxxxxxx?w=800&amp;h=400&amp;fit=crop</image:loc>
+            <image:title>Your Blog Post Title Here</image:title>
+        </image:image>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/content/blog/seo-cheat-sheet-2025/</loc>
+        <lastmod>2025-12-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&amp;h=400&amp;fit=crop</image:loc>
+            <image:title>The Ultimate SEO Cheat Sheet: How to Rank on Google and AI Search in 2025</image:title>
+        </image:image>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/content/blog/data-driven-decision-making-in-operations/</loc>
+        <lastmod>2025-12-05</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&amp;h=400&amp;fit=crop</image:loc>
+            <image:title>Data-Driven Decision Making in Operations</image:title>
+        </image:image>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/content/blog/future-of-digital-banking-in-bangladesh/</loc>
+        <lastmod>2025-12-08</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&amp;h=400&amp;fit=crop</image:loc>
+            <image:title>The Future of Digital Banking in Bangladesh</image:title>
+        </image:image>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/admin/</loc>
+        <lastmod>2026-01-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/blog/</loc>
+        <lastmod>2026-01-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/</loc>
+        <lastmod>2026-01-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+        
+    </url>
+    
+    <url>
+        <loc>https://shamrat-portfolio.netlify.app/robots.txt/</loc>
+        <lastmod>2026-01-02</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        
+    </url>
+    
+</urlset>
