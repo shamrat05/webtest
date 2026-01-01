@@ -2052,8 +2052,8 @@ a:hover {
   }
   
   .image-container {
-    width: 300px;
-    height: 300px;
+    width: var(--profile-image-width);
+    height: var(--profile-image-height);
   }
   
   .about-stats {
@@ -2146,8 +2146,8 @@ a:hover {
   }
   
   .image-container {
-    width: 250px;
-    height: 250px;
+    width: var(--profile-image-width);
+    height: var(--profile-image-height);
   }
   
   .btn {
@@ -2201,8 +2201,8 @@ a:hover {
   }
   
   .image-container {
-    width: 300px;
-    height: 300px;
+    width: var(--profile-image-width);
+    height: var(--profile-image-height);
   }
   
   .motivation-word {
