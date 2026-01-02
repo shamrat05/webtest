@@ -1,0 +1,51 @@
+{#
+JSON-LD Structured Data for Blog Posts
+Automatically generated based on front matter
+#}
+{% if schema_type == "BlogPosting" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "image": "{{ image }}",
+  "author": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Md. Shamrat Hossain Portfolio",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/shamrat-profile.jpg"
+    }
+  },
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "keywords": "{{ tags | default([]) | join(', ') }}",
+  "articleSection": "{{ category | default('Blog') }}",
+  "inLanguage": "en-US"
+}
+</script>
+{% elif schema_type == "Person" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Md. Shamrat Hossain",
+  "jobTitle": "Marketing & Operations Professional",
+  "url": "{{ site.url }}",
+  "sameAs": [
+    "https://linkedin.com/in/shamrat5"
+  ],
+  "knowsAbout": ["Marketing", "Operations", "Data Analytics", "Business Development"]
+}
+</script>
+{% endif %}

@@ -1,0 +1,78 @@
+---
+layout: layouts/base.njk
+title: Blog
+description: Latest insights and articles on marketing, operations, and professional growth
+---
+
+<div class="blog-page-container">
+    <div class="container">
+        <div class="section-header">
+            <h1 class="section-title">All Blog Posts</h1>
+            <p class="section-subtitle">Thoughts on marketing, operations, and professional growth</p>
+        </div>
+        
+        <div class="blog-grid">
+            {% for post in collections.posts | reverse %}
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}">
+                    <div class="blog-category">{{ post.data.category }}</div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">{{ post.date | postDate }}</span>
+                        <span class="blog-read-time">{{ post.content | readTime }}</span>
+                    </div>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description }}</p>
+                    <a href="{{ post.url }}" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/#contact" class="btn btn-primary">
+                <i class="fas fa-envelope"></i>
+                Get In Touch
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.blog-page-container {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.blog-page-container .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.blog-page-container .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.blog-page-container .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .blog-page-container .section-title {
+        font-size: 2rem;
+    }
+    
+    .blog-page-container {
+        padding-top: 100px;
+    }
+}
+</style>
