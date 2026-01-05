@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - Md. Shamrat Hossain{% else %}Md. Shamrat Hossain - Marketing & Operations Professional{% endif %}</title>
+    <meta name="description" content="{% if description %}{{ description }}{% else %}Marketing and Operations Professional specializing in data-driven decision making, customer relations, and business development.{% endif %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS - EXACT COPY FROM ORIGINAL -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <!-- SEO Components -->
+    {% include "components/seo.njk" %}
+    
+    <!-- Inline SVG Icons for Performance -->
+    {% include "components/icons.njk" %}
+    
+    <!-- JSON-LD Structured Data -->
+    {% if schema_type %}
+    {% include "components/schema.njk" %}
+    {% endif %}
+</head>
+<body>
+    <div class="particle-container"></div>
+    
+    <!-- Navigation - EXACT COPY -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="animated-logo">
+                    <div class="logo-text" id="logo-text">SH</div>
+                    <div class="logo-image" id="logo-image">
+                        <img src="/assets/images/imgs/shamrat-profile.jpg" alt="Md. Shamrat Hossain - Marketing & Operations Professional" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="/#home" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a>
+                <a href="/#about" class="nav-link">About</a>
+                <a href="/#experience" class="nav-link">Experience</a>
+                <a href="/#skills" class="nav-link">Skills</a>
+                <a href="/#portfolio" class="nav-link">Portfolio</a>
+                <a href="/blog" class="nav-link" data-nav="blog">Blog</a>
+                <a href="/#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="navbar-typewriter">
+                    <span class="typed-word">Excellence</span>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    {{ content | safe }}
+
+    <!-- Footer - EXACT COPY -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Md. Shamrat Hossain</h3>
+                    <p>Marketing & Operations Professional</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#contact" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+8801727805705" class="social-link">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/shamrat5" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Md. Shamrat Hossain. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript with defer for better performance -->
+    <script src="/assets/js/script.js" defer></script>
+    <script src="/assets/js/vercel-analytics.js" defer></script>
+    
+    <!-- Google Analytics 4 with Consent Mode -->
+    {% include "components/analytics.njk" %}
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+         crossorigin="anonymous"></script>
+</body>
+</html>

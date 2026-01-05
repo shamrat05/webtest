@@ -1,0 +1,195 @@
+{#
+JSON-LD Structured Data for SEO
+Automatically generated based on front matter and content
+#}
+
+{# WebSite Schema with Search Action #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Md. Shamrat Hossain - Marketing & Operations Professional",
+  "description": "Marketing and Operations Professional specializing in data-driven decision making, customer relations, and business development",
+  "url": "{{ site.url }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.url }}/blog/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "jobTitle": "Marketing & Operations Professional",
+    "url": "{{ site.url }}"
+  },
+  "copyrightYear": "2025",
+  "copyrightHolder": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain"
+  },
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "jobTitle": "Marketing & Operations Professional",
+    "description": "Results-driven marketing and operations professional with proven expertise in data analytics, stakeholder coordination, and strategic business execution.",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg",
+    "sameAs": [
+      "https://linkedin.com/in/shamrat5"
+    ],
+    "knowsAbout": [
+      "Marketing Strategy",
+      "Operations Management", 
+      "Data Analytics",
+      "Business Development",
+      "Stakeholder Coordination",
+      "Customer Relations",
+      "Strategic Planning",
+      "Team Leadership"
+    ]
+  }
+}
+</script>
+
+{# Organization Schema #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Md. Shamrat Hossain Professional Services",
+  "description": "Professional marketing and operations consulting services specializing in data-driven decision making and business development",
+  "url": "{{ site.url }}",
+  "founder": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "jobTitle": "Marketing & Operations Professional"
+  },
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg",
+    "width": 400,
+    "height": 400
+  },
+  "sameAs": [
+    "https://linkedin.com/in/shamrat5"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+8801727805705",
+    "contactType": "customer service",
+    "email": "shamrat.r.h@gmail.com",
+    "availableLanguage": "English"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressCountry": "Bangladesh"
+  }
+}
+</script>
+
+{# Blog Post Schema #}
+{% if schema_type == "BlogPosting" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "image": "{{ image }}",
+  "author": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "jobTitle": "Marketing & Operations Professional",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Md. Shamrat Hossain Professional Services",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg",
+      "width": 400,
+      "height": 400
+    }
+  },
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "keywords": "{{ tags | default([]) | join(', ') }}",
+  "articleSection": "{{ category | default('Blog') }}",
+  "inLanguage": "en-US",
+  "wordCount": "{{ content | striptags | replace(' ', '') | length }}",
+  "timeRequired": "{{ content | readTime }}",
+  "educationalLevel": "Professional",
+  "about": [
+    {% for tag in tags | default([]) %}
+    {
+      "@type": "Thing",
+      "name": "{{ tag }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{# Person Schema for main pages #}
+{% if schema_type == "Person" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Md. Shamrat Hossain",
+  "jobTitle": "Marketing & Operations Professional",
+  "description": "Results-driven marketing and operations professional with proven expertise in data analytics, stakeholder coordination, and strategic business execution. MBA in Marketing with 2+ years experience managing operations across 551+ banking outlets.",
+  "url": "{{ site.url }}",
+  "image": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg",
+  "sameAs": [
+    "https://linkedin.com/in/shamrat5"
+  ],
+  "knowsAbout": [
+    "Marketing Strategy",
+    "Operations Management", 
+    "Data Analytics",
+    "Business Development",
+    "Stakeholder Coordination",
+    "Customer Relations",
+    "Strategic Planning",
+    "Team Leadership",
+    "Process Optimization",
+    "Digital Marketing",
+    "Business Intelligence",
+    "Performance Management"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Islamic University"
+  },
+  "hasCredential": [
+    "MBA in Marketing",
+    "BBA in Marketing",
+    "Email Marketing Certification - HubSpot Academy",
+    "Advanced MS Office Certificate - Udemy",
+    "Professional English Communication - Udemy"
+  ],
+  "award": "Best Presenter Award for Research on 'The Future of E-Commerce in Bangladesh'",
+  "knowsLanguage": ["English", "Bengali"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "DOER Services PLC"
+  },
+  "email": "shamrat.r.h@gmail.com",
+  "telephone": "+8801727805705",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dhaka",
+    "addressCountry": "Bangladesh"
+  }
+}
+</script>
+{% endif %}

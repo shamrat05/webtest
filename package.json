@@ -1,0 +1,29 @@
+{
+  "name": "shamrat-portfolio-blog",
+  "version": "1.0.0",
+  "description": "Portfolio website with markdown-based blog writing system",
+  "main": ".eleventy.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npm run build:eleventy && npm run build:assets",
+    "build:eleventy": "npx @11ty/eleventy",
+    "build:assets": "node scripts/minify-assets.js",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "portfolio",
+    "blog",
+    "eleventy",
+    "static-site"
+  ],
+  "author": "Md. Shamrat Hossain",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@vercel/analytics": "^1.6.1",
+    "luxon": "^3.4.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.2"
+  }
+}

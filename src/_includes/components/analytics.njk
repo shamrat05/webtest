@@ -1,0 +1,358 @@
+{#
+Google Analytics 4 with Enhanced User Tracking
+This component handles privacy-compliant analytics tracking with returning visitor identification
+#}
+
+<!-- Google Analytics 4 with Enhanced Tracking -->
+<script>
+  // Enhanced User Tracking System
+  (function() {
+    const VISITOR_KEY = 'shamrat_visitor_id';
+    const SESSION_KEY = 'shamrat_session_start';
+    const LAST_VISIT_KEY = 'shamrat_last_visit';
+    const VISIT_COUNT_KEY = 'shamrat_visit_count';
+    
+    // Generate or retrieve visitor ID
+    let visitorId = localStorage.getItem(VISITOR_KEY);
+    if (!visitorId) {
+      visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem(VISITOR_KEY, visitorId);
+      localStorage.setItem(VISIT_COUNT_KEY, '1');
+      localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+    } else {
+      // Update returning visitor data
+      const visitCount = parseInt(localStorage.getItem(VISIT_COUNT_KEY) || '0') + 1;
+      const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+      localStorage.setItem(VISIT_COUNT_KEY, visitCount.toString());
+      localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+      
+      // Store visitor data for analytics
+      window.visitorData = {
+        isReturning: true,
+        visitCount: visitCount,
+        lastVisit: lastVisit,
+        visitorId: visitorId
+      };
+    }
+    
+    // Session Management
+    let sessionId = sessionStorage.getItem(SESSION_KEY);
+    if (!sessionId) {
+      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem(SESSION_KEY, sessionId);
+      
+      // Mark as new session for analytics
+      window.isNewSession = true;
+    } else {
+      window.isNewSession = false;
+    }
+    
+    // Store session data
+    window.sessionData = {
+      sessionId: sessionId,
+      startTime: new Date().toISOString(),
+      visitorId: visitorId
+    };
+  })();
+  
+  // Consent Mode Configuration
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  // Set default consent to 'denied' for privacy compliance
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted'
+  });
+
+  // Initialize GA4
+  gtag('js', new Date());
+  
+  // Get GA4 Measurement ID from environment variables or use placeholder
+  // You can set this in Vercel Project Settings > Environment Variables
+  const GA_MEASUREMENT_ID = '{{ GA_MEASUREMENT_ID | default("G-XXXXXXXXXX") }}';
+  
+  // Only initialize GA4 if a valid Measurement ID is provided
+  if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
+    console.warn('GA4 Measurement ID not configured. Add GA_MEASUREMENT_ID to environment variables.');
+    return; // Exit script if no valid ID
+  }
+  
+  // Enhanced GA4 configuration with user properties
+  const gaConfig = {
+    page_title: '{{ title | default("Homepage") }}',
+    page_location: '{{ site.url }}{{ page.url | default("/") }}',
+    send_page_view: true,
+    user_id: window.sessionData?.visitorId,
+    custom_map: {
+      'user_type': 'user_type',
+      'visit_count': 'visit_count',
+      'session_type': 'session_type'
+    }
+  };
+  
+  // Add user properties if available
+  if (window.visitorData) {
+    gaConfig.user_type = window.visitorData.isReturning ? 'returning' : 'new';
+    gaConfig.visit_count = window.visitorData.visitCount;
+    gaConfig.session_type = window.isNewSession ? 'new' : 'returning';
+  }
+  
+  gtag('config', GA_MEASUREMENT_ID, gaConfig);
+</script>
+
+<!-- Consent Banner (Optional) -->
+<div id="cookie-consent-banner" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: 12px; padding: 20px; z-index: 10000; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+  <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 200px;">
+      <h4 style="margin: 0 0 8px 0; color: var(--text-primary);">Cookie Consent</h4>
+      <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">
+        We use cookies to enhance your experience and analyze site traffic. 
+        By clicking "Accept All", you consent to our use of cookies.
+      </p>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button id="cookie-accept" style="padding: 8px 16px; background: var(--primary-500); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">
+        Accept All
+      </button>
+      <button id="cookie-decline" style="padding: 8px 16px; background: var(--bg-page); color: var(--text-primary); border: 1px solid var(--border-default); border-radius: 6px; cursor: pointer; font-size: 14px;">
+        Decline
+      </button>
+      <a href="/privacy-policy" style="padding: 8px 16px; background: transparent; color: var(--primary-500); border: 1px solid var(--primary-500); border-radius: 6px; text-decoration: none; font-size: 14px;">
+        Privacy Policy
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Cookie Consent Management
+(function() {
+  const consentKey = 'cookie-consent';
+  const banner = document.getElementById('cookie-consent-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+  
+  // Check if user has already made a choice
+  const userConsent = localStorage.getItem(consentKey);
+  
+  if (!userConsent) {
+    // Show banner if no consent decision has been made
+    banner.style.display = 'block';
+  }
+  
+  // Accept button handler
+  acceptBtn.addEventListener('click', function() {
+    // Grant consent for analytics
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted'
+    });
+    
+    // Store consent in localStorage
+    localStorage.setItem(consentKey, 'accepted');
+    
+    // Hide banner
+    banner.style.display = 'none';
+    
+    // Track consent acceptance (if analytics is now granted)
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'consent_update', {
+        'consent_status': 'accepted',
+        'consent_timestamp': new Date().toISOString()
+      });
+    }
+  });
+  
+  // Decline button handler
+  declineBtn.addEventListener('click', function() {
+    // Maintain denied consent
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    
+    // Store consent in localStorage
+    localStorage.setItem(consentKey, 'declined');
+    
+    // Hide banner
+    banner.style.display = 'none';
+    
+    // Track consent decline
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'consent_update', {
+        'consent_status': 'declined',
+        'consent_timestamp': new Date().toISOString()
+      });
+    }
+  });
+})();
+
+// Enhanced Analytics Tracking with Visitor Context
+function trackUserInteraction(action, category, label, additionalParams = {}) {
+  // Only track if consent has been granted
+  if (typeof gtag !== 'undefined') {
+    // Enhanced event data with visitor context
+    const eventParams = {
+      'event_category': category,
+      'event_label': label,
+      'value': 1,
+      ...additionalParams
+    };
+    
+    // Add visitor context if available
+    if (window.visitorData) {
+      eventParams.user_type = window.visitorData.isReturning ? 'returning' : 'new';
+      eventParams.visit_count = window.visitorData.visitCount;
+      eventParams.visitor_id = window.visitorData.visitorId;
+    }
+    
+    if (window.sessionData) {
+      eventParams.session_id = window.sessionData.sessionId;
+      eventParams.session_type = window.isNewSession ? 'new' : 'returning';
+    }
+    
+    gtag('event', action, eventParams);
+  }
+}
+
+// Track page view with enhanced context
+function trackPageView(pagePath, pageTitle) {
+  if (typeof gtag !== 'undefined') {
+    const pageViewParams = {
+      page_title: pageTitle || document.title,
+      page_location: window.location.origin + pagePath
+    };
+    
+    // Add visitor context
+    if (window.visitorData) {
+      pageViewParams.user_type = window.visitorData.isReturning ? 'returning' : 'new';
+      pageViewParams.visit_count = window.visitorData.visitCount;
+    }
+    
+    if (window.sessionData) {
+      pageViewParams.session_id = window.sessionData.sessionId;
+      pageViewParams.session_type = window.isNewSession ? 'new' : 'returning';
+    }
+    
+    gtag('event', 'page_view', pageViewParams);
+  }
+}
+
+// Enhanced tracking initialization
+document.addEventListener('DOMContentLoaded', function() {
+  // Track page view with enhanced context
+  trackPageView(window.location.pathname, document.title);
+  
+  // Track blog post reads
+  if (window.location.pathname.includes('/blog/')) {
+    trackUserInteraction('view_content', 'Blog', document.title, {
+      content_type: 'blog_post',
+      content_category: 'article_read'
+    });
+  }
+  
+  // Track contact form interactions with enhanced data
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function() {
+      trackUserInteraction('generate_lead', 'Contact', 'Form Submission', {
+        form_name: 'contact_form',
+        form_location: window.location.pathname
+      });
+    });
+  }
+  
+  // Track external link clicks with destination info
+  document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      const isExternal = !this.href.includes(window.location.hostname);
+      trackUserInteraction('click', 'External Link', this.href, {
+        link_domain: new URL(this.href).hostname,
+        is_external: isExternal
+      });
+    });
+  });
+  
+  // Track theme switching for UX analysis
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      trackUserInteraction('change_setting', 'Theme', newTheme, {
+        previous_theme: currentTheme,
+        new_theme: newTheme
+      });
+    });
+  }
+  
+  // Track navigation usage
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      const sectionId = this.getAttribute('href').replace('#', '');
+      trackUserInteraction('navigation', 'Internal Link', sectionId, {
+        link_text: this.textContent.trim(),
+        link_location: 'navigation'
+      });
+    });
+  });
+  
+  // Track scroll depth for engagement analysis
+  let maxScrollDepth = 0;
+  let scrollThrottleTimer;
+  
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollThrottleTimer);
+    scrollThrottleTimer = setTimeout(function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollDepth = Math.round((scrollTop / scrollHeight) * 100);
+      
+      if (scrollDepth > maxScrollDepth && scrollDepth % 25 === 0) {
+        maxScrollDepth = scrollDepth;
+        trackUserInteraction('scroll', 'Engagement', 'Scroll Depth', {
+          scroll_depth: scrollDepth,
+          page_path: window.location.pathname
+        });
+      }
+    }, 500);
+  });
+  
+  // Track session duration (time on page)
+  const sessionStartTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    const sessionDuration = Math.round((Date.now() - sessionStartTime) / 1000);
+    if (sessionDuration > 10) { // Only track sessions longer than 10 seconds
+      trackUserInteraction('timing_complete', 'Engagement', 'Session Duration', {
+        session_duration: sessionDuration,
+        page_path: window.location.pathname
+      });
+    }
+  });
+});
+
+// Track visibility changes (tab switches)
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    trackUserInteraction('tab_hidden', 'Engagement', 'Tab Switch', {
+      page_path: window.location.pathname
+    });
+  } else {
+    trackUserInteraction('tab_visible', 'Engagement', 'Tab Return', {
+      page_path: window.location.pathname
+    });
+  }
+});
+
+// Console log for debugging (remove in production)
+console.log('Enhanced Analytics initialized:', {
+  visitorData: window.visitorData,
+  sessionData: window.sessionData,
+  isNewSession: window.isNewSession
+});
+</script>

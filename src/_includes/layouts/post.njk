@@ -1,0 +1,171 @@
+---
+layout: layouts/base.njk
+schema_type: BlogPosting
+---
+{% if schema_type == "BlogPosting" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ schema_type }}",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "image": "{{ image }}",
+  "author": {
+    "@type": "Person",
+    "name": "Md. Shamrat Hossain",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Md. Shamrat Hossain Portfolio",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/imgs/shamrat-profile.jpg"
+    }
+  },
+  "datePublished": "{{ date | isoDate }}",
+  "dateModified": "{{ date | isoDate }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  },
+  "keywords": "{{ tags | default([]) | join(', ') }}",
+  "articleSection": "{{ category | default('Blog') }}",
+  "inLanguage": "en-US"
+}
+</script>
+{% endif %}
+
+<div class="blog-post-container">
+    <div class="blog-post-wrapper">
+        <article>
+            <header class="blog-post-header">
+                {% if category %}
+                <div class="blog-post-category">{{ category }}</div>
+                {% endif %}
+                <h1 class="blog-post-title">{{ title }}</h1>
+                <div class="blog-post-meta">
+                    <div class="blog-post-meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>{{ date | postDate }}</span>
+                    </div>
+                    <div class="blog-post-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>{{ content | readTime }}</span>
+                    </div>
+                </div>
+                
+                <!-- Author Bio Section for E-E-A-T -->
+                <div class="author-bio">
+                    <div class="author-bio-content">
+                        <div class="author-bio-image">
+                            <img src="/assets/images/imgs/shamrat-profile.jpg" alt="Md. Shamrat Hossain" loading="lazy">
+                        </div>
+                        <div class="author-bio-text">
+                            <h4>Written by Md. Shamrat Hossain</h4>
+                            <p class="author-bio-title">Marketing & Operations Professional</p>
+                            <p class="author-bio-description">
+                                Results-driven marketing and operations professional with proven expertise in data analytics, 
+                                stakeholder coordination, and strategic business execution. MBA in Marketing from Islamic University 
+                                with 2+ years experience managing operations across 551+ banking outlets.
+                            </p>
+                            <div class="author-bio-credentials">
+                                <span class="credential">MBA in Marketing</span>
+                                <span class="credential">BBA in Marketing</span>
+                                <span class="credential">HubSpot Certified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {% if image %}
+            <img src="{{ image }}" alt="{{ title }}" class="blog-post-image">
+            {% endif %}
+
+            <div class="blog-post-content">
+                {{ content | safe }}
+            </div>
+
+            <!-- Google AdSense Inline Ad for Blog Posts -->
+            <div class="ads-container ads-inline">
+                <div class="ads-label">Advertisement</div>
+                <ins class="adsbygoogle ads-responsive"
+                     style="display:block;"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <!-- Related Posts Section -->
+            {% set currentPost = collections.posts | reverse | first %}
+            {% set relatedPosts = [] %}
+            {% set currentTags = tags | default([]) %}
+            
+            {# Find posts with matching tags (excluding current post) #}
+            {% for post in collections.posts %}
+                {% if post.url != page.url %}
+                    {% set postTags = post.data.tags | default([]) %}
+                    {% set matchingTags = [] %}
+                    
+                    {# Find common tags #}
+                    {% for tag in currentTags %}
+                        {% if tag in postTags %}
+                            {% set matchingTags = matchingTags | push(tag) %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {# If there are matching tags, add the post to related posts #}
+                    {% if matchingTags | length > 0 %}
+                        {% set postWithScore = {
+                            "post": post,
+                            "score": matchingTags | length,
+                            "date": post.date
+                        } %}
+                        {% set relatedPosts = relatedPosts | push(postWithScore) %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            
+            {# Sort by score (most matching tags first) and date, take top 3 #}
+            {% set relatedPosts = relatedPosts | sort(attribute='score', reverse=true) | slice(0, 3) %}
+            
+            {% if relatedPosts | length > 0 %}
+            <div class="related-posts">
+                <h3>Related Articles</h3>
+                <div class="related-posts-grid">
+                    {% for item in relatedPosts %}
+                    {% set relatedPost = item.post %}
+                    <article class="related-post-card">
+                        <a href="{{ relatedPost.url }}" class="related-post-link">
+                            {% if relatedPost.data.image %}
+                            <div class="related-post-image">
+                                <img src="{{ relatedPost.data.image }}" alt="{{ relatedPost.data.title }}" loading="lazy">
+                            </div>
+                            {% endif %}
+                            <div class="related-post-content">
+                                <h4>{{ relatedPost.data.title }}</h4>
+                                <p>{{ relatedPost.data.description }}</p>
+                                <div class="related-post-meta">
+                                    <span class="related-post-date">{{ relatedPost.date | postDate }}</span>
+                                    <span class="related-post-read-time">{{ relatedPost.content | readTime }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="blog-post-actions">
+                <h3>Enjoyed this post?</h3>
+                <a href="/#contact" class="back-to-blog">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                </a>
+            </div>
+        </article>
+    </div>
+</div>

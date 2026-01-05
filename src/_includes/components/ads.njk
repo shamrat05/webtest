@@ -1,0 +1,177 @@
+{#
+Google AdSense Integration
+Responsive ad units for monetization
+#}
+
+{# 
+Instructions for setup:
+1. Replace 'ca-pub-XXXXXXXXXXXXXXXX' with your actual AdSense Publisher ID
+2. Replace '1234567890' with your actual Ad Slot IDs
+3. Test ads in development with your AdSense account
+4. Make sure your site is approved for AdSense
+#}
+
+<style>
+/* AdSense Styling */
+.ads-container {
+  margin: var(--space-lg) 0;
+  text-align: center;
+}
+
+.ads-container.ads-inline {
+  margin: var(--space-md) 0;
+}
+
+.ads-container.ads-footer {
+  margin: var(--space-xl) 0;
+}
+
+.ads-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Ad Units */
+.ads-responsive {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Desktop ads */
+@media (min-width: 768px) {
+  .ads-desktop {
+    display: block;
+  }
+  .ads-mobile {
+    display: none;
+  }
+}
+
+/* Mobile ads */
+@media (max-width: 767px) {
+  .ads-desktop {
+    display: none;
+  }
+  .ads-mobile {
+    display: block;
+  }
+}
+</style>
+
+<!-- AdSense Script (Load once) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+
+<!-- Header Ad (Optional - can be added to header area) -->
+<div class="ads-container ads-header" style="display: none;">
+  <div class="ads-label">Advertisement</div>
+  <ins class="adsbygoogle ads-responsive ads-header"
+       style="display:block;"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<!-- Inline Ad (for blog posts - after 2nd paragraph) -->
+<div class="ads-container ads-inline">
+  <div class="ads-label">Advertisement</div>
+  <ins class="adsbygoogle ads-responsive"
+       style="display:block;"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<!-- Desktop Sidebar Ad (for blog listing pages) -->
+<div class="ads-container ads-desktop">
+  <div class="ads-label">Advertisement</div>
+  <ins class="adsbygoogle ads-responsive"
+       style="display:block;"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<!-- Mobile Banner Ad -->
+<div class="ads-container ads-mobile">
+  <div class="ads-label">Advertisement</div>
+  <ins class="adsbygoogle ads-responsive"
+       style="display:block;"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<!-- Footer Ad -->
+<div class="ads-container ads-footer">
+  <div class="ads-label">Advertisement</div>
+  <ins class="adsbygoogle ads-responsive"
+       style="display:block;"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<script>
+/* Initialize AdSense ads */
+(function() {
+  try {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  } catch (e) {
+    console.log('AdSense initialization error:', e);
+  }
+})();
+
+/* Lazy load ads for better performance */
+function loadAds() {
+  const ads = document.querySelectorAll('.adsbygoogle');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          observer.unobserve(entry.target);
+        } catch (e) {
+          console.log('AdSense lazy load error:', e);
+        }
+      }
+    });
+  }, {
+    rootMargin: '100px'
+  });
+
+  ads.forEach(ad => observer.observe(ad));
+}
+
+// Initialize ads when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadAds);
+} else {
+  loadAds();
+}
+
+/* Block ads for users with ad blockers (optional) */
+function detectAdBlocker() {
+  const adBlocker = window.google_ad_loaded === undefined && window.google_ads_queue === undefined;
+  
+  if (adBlocker) {
+    // Hide ad containers or show a message
+    const adContainers = document.querySelectorAll('.ads-container');
+    adContainers.forEach(container => {
+      container.style.display = 'none';
+    });
+  }
+}
+
+// Check for ad blocker
+setTimeout(detectAdBlocker, 1000);
+</script>
